@@ -1,3 +1,4 @@
+import os
 from gi.repository import Gst, GLib
 import sys
 
@@ -24,6 +25,15 @@ def on_message(bus: Gst.Bus, message: Gst.Message, loop: GLib.MainLoop):
     return True
 
 
+def graph_pipeline(pipeline):
+    Gst.debug_bin_to_dot_file(pipeline, Gst.DebugGraphDetails.ALL,
+                              "pipeline")
+    try:
+        os.system("dot -Tpng -o ./pipeline.png ./pipeline.dot")
+    except Exception as e:
+        print(e)
+
+
 def main():
     Gst.init(sys.argv)
 
@@ -41,6 +51,8 @@ def main():
 
     # run
     loop.run()
+
+    graph_pipeline(pipeline)
 
     # if fails, then clean
     pipeline.set_state(Gst.State.NULL)

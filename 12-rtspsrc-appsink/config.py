@@ -1,0 +1,3 @@
+USERNAME = "makepluscode"
+PASSWORD = "000000"
+IPADDRESS = "192.168.219.155"

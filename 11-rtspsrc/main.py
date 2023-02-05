@@ -50,7 +50,7 @@ def create_pipepline(pipeline: Gst.Pipeline):
     src.set_property("latency", 0)
     src.set_property("drop-on-latency", True)
     # src.set_property("udp-buffer-size", 2097152)
-    
+
     queue = Gst.ElementFactory.make("queue", "queue")
     queue.set_property("max-size-buffers", 4)
     depay = Gst.ElementFactory.make("rtph264depay", "depay")
@@ -97,10 +97,10 @@ def create_pipepline(pipeline: Gst.Pipeline):
 
 
 def main():
+    Gst.init(sys.argv)
+
     Gst.debug_set_active(True)
     Gst.debug_set_default_threshold(3)
-
-    Gst.init(sys.argv)
 
     # create a pipeline with factory
     pipeline = Gst.Pipeline()

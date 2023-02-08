@@ -72,12 +72,11 @@ def create_pipepline(pipeline: Gst.Pipeline):
     convert = Gst.ElementFactory.make("videoconvert", "convert")
     videorate = Gst.ElementFactory.make("videorate", "videorate")
     caps = Gst.Caps.from_string("video/x-raw, framerate=30/1")
-#    sink = Gst.ElementFactory.make("autovideosink", "sink")
     sink = Gst.ElementFactory.make("appsink", "sink")
     sink.set_property("emit-signals", True)
     sink.set_property("max-buffers", 2)
     sink.set_property("drop", True)
-#    sink.set_property("sync", False)
+    sink.set_property("sync", False)
 
     if (not src or not depay or not parse or not decode or not convert or not sink):
         print("ERROR: Not all elements could be created.")
@@ -104,10 +103,8 @@ def create_pipepline(pipeline: Gst.Pipeline):
     ret = depay.link(parse)
     ret = ret and parse.link(decode)
     ret = ret and decode.link(convert)
-    ret = ret and convert.link(sink)
-#    ret = ret and convert.link(videorate)
-#    ret = ret and videorate.link_filtered(sink, caps)
-#    ret = ret and videorate.link_filtered(sink, caps)
+    ret = ret and convert.link(videorate)
+    ret = ret and videorate.link_filtered(sink, caps)
 
     if not ret:
         print("ERROR: Elements could not be linked")

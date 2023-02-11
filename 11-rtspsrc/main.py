@@ -8,7 +8,7 @@ import gi
 gi.require_version('Gst', '1.0')
 
 # gst pipeline
-# gst-launch-1.0 rtspsrc location='rtsp://makepluscode:000000@192.168.219.155/stream1' ! rtph264depay ! h264parse ! decodebin ! appsink
+# gst-launch-1.0 rtspsrc location='rtsp://makepluscode:000000@192.168.219.155/stream1' ! rtph264depay ! h264parse ! decodebin ! videoconvert ! autovideosink
 
 
 def graph_pipeline(pipeline):

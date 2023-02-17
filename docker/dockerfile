@@ -1,0 +1,16 @@
+FROM nvcr.io/nvidia/tensorrt:23.01-py3
+
+RUN apt-get update
+RUN apt-get install -y \
+    cmake ffmpeg git ninja-build libsm6 libxrender-dev libxext6 graphviz \
+    libglib2.0-0 libcairo2-dev libxt-dev libgirepository1.0-dev \
+    gstreamer-1.0 libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev \
+    gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
+    gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl \
+    gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
+    RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install python pacakges
+RUN pip install --no-cache-dir --upgrade pip wheel setuptools
+RUN pip install pycairo PyGObject debugpy
+#RUN pip install ultralytics

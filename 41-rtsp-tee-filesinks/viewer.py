@@ -89,8 +89,8 @@ class MyWindow(Gtk.Window):
         self.count = self.count + 1
         self.drawingArea1.queue_draw()
         self.drawingArea2.queue_draw()
-        # self.drawingArea3.queue_draw()
-        # self.drawingArea4.queue_draw()
+        self.drawingArea3.queue_draw()
+        self.drawingArea4.queue_draw()
 
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")

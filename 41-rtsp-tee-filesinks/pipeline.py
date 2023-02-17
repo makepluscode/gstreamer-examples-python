@@ -74,6 +74,15 @@ def on_message(bus: Gst.Bus, message: Gst.Message, loop: GLib.MainLoop):
                     if os.path.exists("./ch2.jpg"):
                         os.remove("./ch2.jpg")
                     os.symlink(file_path, "./ch2.jpg")
+                if 'ch03' in file_path:
+                    if os.path.exists("./ch3.jpg"):
+                        os.remove("./ch3.jpg")
+                    os.symlink(file_path, "./ch3.jpg")
+                if 'ch04' in file_path:
+                    if os.path.exists("./ch4.jpg"):
+                        os.remove("./ch4.jpg")
+                    os.symlink(file_path, "./ch4.jpg")
+
     return True
 
 

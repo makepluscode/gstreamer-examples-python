@@ -92,11 +92,30 @@ def on_sample_camera_ch1(sink, data):
     return True
 
 
-def on_on_sample_camera_ch2(sink, data):
+def on_sample_camera_ch2(sink, data):
     debugpy.debug_this_thread()
 
     gst_sample = sink.emit("pull-sample")
     sample = SampleWapper(gst_sample, 2)
+    sample_queue.put(sample)
+
+    return True
+
+def on_sample_camera_ch3(sink, data):
+    debugpy.debug_this_thread()
+
+    gst_sample = sink.emit("pull-sample")
+    sample = SampleWapper(gst_sample, 3)
+    sample_queue.put(sample)
+
+    return True
+
+
+def on_sample_camera_ch4(sink, data):
+    debugpy.debug_this_thread()
+
+    gst_sample = sink.emit("pull-sample")
+    sample = SampleWapper(gst_sample, 4)
     sample_queue.put(sample)
 
     return True

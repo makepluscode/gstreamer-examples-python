@@ -14,7 +14,6 @@ import fsutil
 from common import sample_queue, SampleWapper
 from pipeline import PipelineClass
 
-
 np_framebuffer = np.full((1920, 1080, 3), 0, dtype=np.uint8)
 
 """
@@ -51,7 +50,7 @@ def create_sink_bin():
     overlay.set_property("font-desc", "Sans, 32")
 
     jpeg_encode = Gst.ElementFactory.make("jpegenc", "jpeg_encode")
-    jpeg_encode.set_property("quality", 80)
+    jpeg_encode.set_property("quality", 50)
 
     tee = Gst.ElementFactory.make("tee", "tee")
 

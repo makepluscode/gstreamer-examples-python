@@ -1,3 +1,4 @@
+# rtsp camera sources
 SRC1_IPADDRESS = "192.168.219.155"
 SRC1_USERNAME = "makepluscode"
 SRC1_PASSWORD = "000000"
@@ -13,3 +14,6 @@ SRC3_PASSWORD = "000000"
 SRC4_IPADDRESS = "192.168.219.160"
 SRC4_USERNAME = "makepluscode"
 SRC4_PASSWORD = "000000"
+
+# host configurations
+DATA_PATH = "/data"

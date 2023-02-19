@@ -5,6 +5,9 @@ import cairo
 import os
 from gi.repository import Gtk, Gdk, GLib, GdkPixbuf
 import gi
+
+import config
+
 gi.require_version('Gtk', '3.0')
 
 
@@ -95,7 +98,7 @@ class MyWindow(Gtk.Window):
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
 
-        cnt_dirs, cnt_files = fsutil.get_files_all("./data")
+        cnt_dirs, cnt_files = fsutil.get_files_all()
 
         # print(cnt_dirs, cnt_files, size_total)
 

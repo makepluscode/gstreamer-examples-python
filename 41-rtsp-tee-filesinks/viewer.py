@@ -21,7 +21,7 @@ class DrawingArea(Gtk.DrawingArea):
 
     def on_draw(self, area, context):
 
-        debugpy.debug_this_thread()
+        #debugpy.debug_this_thread()
 
         filename = "ch%d.jpg" % self.id
 

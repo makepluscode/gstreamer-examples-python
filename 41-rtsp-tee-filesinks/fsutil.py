@@ -1,6 +1,7 @@
 import os
 import time
 
+import config
 
 def init():
     return True
@@ -9,7 +10,7 @@ def init():
 def get_path():
     now = time.localtime()
 
-    str_path = "./data/%04d%02d%02d_%02d%02d" % (
+    str_path = "/data/%04d%02d%02d_%02d%02d" % (
         now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min)
 
     is_exist = os.path.exists(str_path)
@@ -20,7 +21,7 @@ def get_path():
 
 
 def print_statistics():
-    num_of_dirs, num_of_files = get_files_all("./data")
+    num_of_dirs, num_of_files = get_files_all("/data")
     print("total : %d directories and %d files" % (num_of_dirs, num_of_files))
 
 

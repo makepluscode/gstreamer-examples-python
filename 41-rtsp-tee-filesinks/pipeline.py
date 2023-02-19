@@ -3,6 +3,8 @@ from gi.repository import Gst, GLib, GObject
 import debugpy
 import os
 
+import config
+
 
 class PipelineClass(object):
     _instance = None
@@ -66,22 +68,19 @@ def on_message(bus: Gst.Bus, message: Gst.Message, loop: GLib.MainLoop):
             if msg_struct.get_name() == "GstMultiFileSink":
                 success, index = msg_struct.get_int("index")
                 file_path = msg_struct.get_string("filename")
+
                 if 'ch01' in file_path:
-                    if os.path.exists("./ch1.jpg"):
-                        os.remove("./ch1.jpg")
-                    os.symlink(file_path, "./ch1.jpg")
+                    link_path = config.DATA_PATH + "/ch1.jpg"
                 if 'ch02' in file_path:
-                    if os.path.exists("./ch2.jpg"):
-                        os.remove("./ch2.jpg")
-                    os.symlink(file_path, "./ch2.jpg")
+                    link_path = config.DATA_PATH + "/ch2.jpg"
                 if 'ch03' in file_path:
-                    if os.path.exists("./ch3.jpg"):
-                        os.remove("./ch3.jpg")
-                    os.symlink(file_path, "./ch3.jpg")
+                    link_path = config.DATA_PATH + "/ch3.jpg"
                 if 'ch04' in file_path:
-                    if os.path.exists("./ch4.jpg"):
-                        os.remove("./ch4.jpg")
-                    os.symlink(file_path, "./ch4.jpg")
+                    link_path = config.DATA_PATH + "/ch4.jpg"
+
+                if os.path.exists(link_path):
+                    os.remove(link_path)
+                os.symlink(file_path, link_path)
 
     return True
 

@@ -26,7 +26,7 @@ class DrawingArea(Gtk.DrawingArea):
 
         #debugpy.debug_this_thread()
 
-        filename = "ch%d.jpg" % self.id
+        filename = config.DATA_PATH + "/ch%d.jpg" % self.id
 
         if os.path.exists(filename):
             # print("file exist")

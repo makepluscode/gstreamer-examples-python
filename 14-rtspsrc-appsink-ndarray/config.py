@@ -1,0 +1,3 @@
+USERNAME = "msjcorp"
+PASSWORD = "msj1201"
+IPADDRESS = "192.168.219.138"
